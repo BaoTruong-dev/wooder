@@ -1,0 +1,73 @@
+.mobile-nav {
+  @include desktop {
+    @include transition;
+    @include hidden;
+  }
+  @include tablet {
+    @include transition;
+    @include hidden;
+    &.show {
+      @include visible;
+      position: fixed;
+      height: 100vh;
+      right: 0;
+      width: 100%;
+      @include flexCenter;
+      flex-direction: column;
+      background-color: $black-cl;
+      @include transition;
+      a {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  list-style: none;
+  display: flex;
+  position: absolute;
+  right: -50%;
+  height: 100%;
+  z-index: 2;
+  @include transition;
+  transform-origin: center right;
+  li {
+    @include tablet {
+      height: 15%;
+    }
+    height: 100%;
+  }
+  a {
+    --pd: 20px;
+    @include flexCenter;
+    text-decoration: none;
+    font-size: 15px;
+    color: $white-cl;
+    padding: 0 var(--pd);
+    height: 100%;
+    position: relative;
+    @include transition($t);
+    &:hover {
+      color: $primary-cl;
+      @include transition($t);
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: calc(100% - var(--pd) * 2);
+      height: 2px;
+      position: absolute;
+      top: 80%;
+      left: calc(--pd);
+      transform: scaleX(0);
+      transform-origin: center left;
+      background-color: $primary-cl;
+      @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+    }
+    &:hover::after {
+      transform-origin: center right;
+      transform: scaleX(1);
+      @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+    }
+  }
+}

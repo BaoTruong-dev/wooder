@@ -1,0 +1,137 @@
+header {
+  &.change {
+    background-color: black;
+  }
+  @include mobile {
+    --heightHeader: 60px;
+  }
+  --heightHeader: 85px;
+  color: $white-cl;
+  height: var(--heightHeader);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 101;
+  @include transition;
+  .container-fluid {
+    @include flexCenter(space-between);
+    position: relative;
+    height: 100%;
+    .hidden {
+      display: none;
+    }
+    .header-menu {
+      @include tablet {
+        @include hidden;
+      }
+      list-style: none;
+      display: flex;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      z-index: 2;
+      li {
+        height: 100%;
+      }
+      a {
+        @include tablet_lc {
+          font-size: 12px;
+          --pd: 12px;
+        }
+        @include mobile_lc {
+          font-size: 10px;
+          --pd: 10px;
+        }
+        --pd: 20px;
+        @include flexCenter;
+        text-decoration: none;
+        font-size: 15px;
+        color: $white-cl;
+        padding: 0 var(--pd);
+        height: 100%;
+        position: relative;
+        @include transition($t);
+        &.active {
+          color: $primary-cl;
+          &::after {
+            transform-origin: center center;
+            transform: scaleX(1);
+            @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+          }
+        }
+        &:hover {
+          color: $primary-cl;
+          @include transition($t);
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: calc(100% - var(--pd) * 2);
+          height: 2px;
+          position: absolute;
+          top: 80%;
+          left: calc(--pd);
+          transform: scaleX(0);
+          transform-origin: center center;
+          background-color: $primary-cl;
+          @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+        }
+        &:hover::after {
+          transform-origin: center center;
+          transform: scaleX(1);
+          @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+        }
+      }
+    }
+  }
+
+  .lang {
+    @include tablet {
+      right: 15%;
+    }
+    position: relative;
+    .current-lang {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      img {
+        width: 15px;
+        height: 10px;
+        margin: 0 5px;
+      }
+    }
+    .selections-lang {
+      background-color: rgba($black-cl, 0.4);
+
+      @include tablet {
+        z-index: 3;
+        @include transition;
+      }
+      &.show {
+        @include visible;
+      }
+      @include hidden;
+      position: absolute;
+      padding: 0;
+      width: 100px;
+      right: -50%;
+      display: flex;
+      text-align: right;
+      flex-direction: column;
+      @include transition;
+      opacity: 0;
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: $white-cl;
+        padding: 10px 20px;
+        @include transition;
+        &:hover {
+          color: #bea67c;
+        }
+      }
+    }
+  }
+}

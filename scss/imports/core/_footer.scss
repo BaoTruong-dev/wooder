@@ -1,0 +1,24 @@
+footer {
+  background-color: $black-cl;
+  color: #b0b0b0;
+  .container {
+    @include flexCenter(space-between);
+    padding: 20px 0;
+    margin-top: $section-mar;
+    position: relative;
+    a {
+      color: #b0b0b0;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    .logo {
+      @include mobile {
+        position: unset;
+        transform: unset;
+        margin: 10px 0;
+      }
+      @include absCenter;
+    }
+  }
+}

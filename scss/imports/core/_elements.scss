@@ -1,0 +1,240 @@
+.wrap-btn {
+  @include mobile {
+    margin-top: -14px;
+  }
+  display: flex;
+  align-items: center;
+  .btn {
+    @include mobile {
+      font-size: 12px;
+    }
+    text-decoration: none;
+    line-height: 58px;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 700;
+    margin-right: 10px;
+    position: relative;
+    @include transition($t);
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 75%;
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background-color: #bea67c;
+      transform-origin: center left;
+      @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+    }
+    &:hover::after {
+      transform-origin: center right;
+      width: 100%;
+      @include transition($t cubic-bezier(0.92, 0.68, 0.27, 1.02));
+    }
+  }
+  img {
+    width: auto;
+    height: 24px;
+    font-weight: 300;
+  }
+}
+
+// Btn hamburger
+.btn-toggle {
+  &.out {
+    opacity: 0;
+    visibility: hidden;
+    @include transition($t);
+  }
+  @include tablet {
+    display: flex;
+  }
+
+  @include mobile {
+    width: 30px;
+    height: 30px;
+  }
+  display: none;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 15px;
+  align-items: center;
+  cursor: pointer;
+  @include transition($t);
+  div {
+    height: 2px;
+    width: 100%;
+    background-color: $white-cl;
+    position: relative;
+    @include transition($t);
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: $white-cl;
+      position: absolute;
+      bottom: 10px;
+      @include transition($t);
+    }
+    &::before {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: $white-cl;
+      position: absolute;
+      top: 10px;
+      @include transition($t);
+    }
+  }
+}
+
+// Btn close
+.btn-close {
+  @include tablet {
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      @include transition($t);
+      div {
+        transform: rotate(45deg);
+        top: 0;
+        @include transition($t);
+        &::after {
+          transform: rotate(90deg);
+          bottom: 0;
+          @include transition($t);
+        }
+      }
+    }
+  }
+  @include mobile {
+    width: 30px;
+    height: 30px;
+  }
+
+  @include flexCenter;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  @include transition($t);
+  div {
+    height: 2px;
+    width: 100%;
+    background-color: $white-cl;
+    position: relative;
+    transform: rotate(0deg);
+    @include transition($t);
+    top: 10px;
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: $white-cl;
+      position: absolute;
+      transform: rotate(0deg);
+      @include transition($t);
+      bottom: 20px;
+    }
+  }
+}
+//
+a {
+  color: $text-cl;
+  text-decoration: none;
+}
+
+strong {
+  font-family: pnb;
+}
+img {
+  max-width: 100%;
+}
+
+// Button back to top
+.btntop {
+  @include mobile {
+    right: 10px;
+  }
+  position: fixed;
+  top: 40%;
+  right: 20px;
+  @include hidden;
+  @include transition;
+  cursor: pointer;
+  &.active {
+    @include mobile {
+      top: 90%;
+    }
+    @include visible;
+    @include transition;
+    top: 90%;
+  }
+  img {
+    @include mobile {
+      width: 30px;
+    }
+    width: 80px;
+    height: 50px;
+  }
+}
+
+.popup {
+  &.active {
+    @include visible;
+    @include transition;
+  }
+  position: fixed;
+  @include hidden;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($black-cl, 0.5);
+  z-index: 100;
+  @include flexCenter;
+  @include transition;
+  .wrap {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 40px;
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .close {
+      position: absolute;
+      top: -15px;
+      right: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: $black-cl;
+      color: $white-cl;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      @include flexCenter;
+      z-index: 100;
+    }
+  }
+}
