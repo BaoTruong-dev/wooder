@@ -336,7 +336,7 @@ $(window).on('load', function () {
         cellAlign: 'left',
         contain: true,
         wrapAround: true,
-        freeScroll: false,
+        freeScroll: true,
         prevNextButtons: false,
         pageDots: false,
         lazyLoad: 2,
