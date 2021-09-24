@@ -30,13 +30,13 @@ function bthResponsive(a, b, c) {
 
 showBtn.click(function () {
     bthResponsive(showBtn, closeBtn, mainMenu);
-    document.querySelector('html').style.position = 'fixed';
+    console.log('click');
+})
+showBtn.click(function () {
+    bthResponsive(showBtn, closeBtn, mainMenu);
+    console.log('click');
 })
 
-closeBtn.click(function () {
-    bthResponsive(showBtn, closeBtn, mainMenu);
-    document.querySelector('html').style.position = 'static';
-})
 
 // Lang
 // let cLang = document.querySelector('.current-lang');

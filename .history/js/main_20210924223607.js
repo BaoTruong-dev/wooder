@@ -35,7 +35,6 @@ showBtn.click(function () {
 
 closeBtn.click(function () {
     bthResponsive(showBtn, closeBtn, mainMenu);
-    document.querySelector('html').style.position = 'static';
 })
 
 // Lang

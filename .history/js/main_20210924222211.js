@@ -30,12 +30,11 @@ function bthResponsive(a, b, c) {
 
 showBtn.click(function () {
     bthResponsive(showBtn, closeBtn, mainMenu);
-    document.querySelector('html').style.position = 'fixed';
 })
+
 
 closeBtn.click(function () {
     bthResponsive(showBtn, closeBtn, mainMenu);
-    document.querySelector('html').style.position = 'static';
 })
 
 // Lang

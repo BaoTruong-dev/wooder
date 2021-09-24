@@ -10,6 +10,7 @@
       @include visible;
       position: fixed;
       height: 100vh;
+      right: 0;
       width: 100%;
       @include flexCenter;
       @include transform(scale(1));
@@ -27,10 +28,11 @@
   list-style: none;
   display: flex;
   position: absolute;
+  right: -50%;
   height: 100%;
   z-index: 2;
   @include transform(scale(0));
-  @include transform-origin(right top);
+  @include transform-origin(right);
   @include transition;
   li {
     @include tablet {
